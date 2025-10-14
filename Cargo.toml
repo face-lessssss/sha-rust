@@ -2,6 +2,13 @@
 name = "sha-rust"
 version = "0.1.0"
 edition = "2021"
+authors = ["radioman <radioman@users.noreply.github.com>"]
+description = "A high-performance Rust library for hash verification and file pattern matching"
+license = "MIT"
+repository = "https://github.com/radioman/sha-rust"
+readme = "README.md"
+keywords = ["hash", "verification", "pattern-matching", "file", "security"]
+categories = ["algorithms", "development-tools", "web-programming"]
 
 [dependencies]
 reqwest = { version = "0.11", features = ["blocking"] }
