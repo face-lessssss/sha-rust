@@ -1,6 +1,6 @@
 [package]
 name = "sha-rust"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["radioman <radioman@users.noreply.github.com>"]
 description = "A high-performance Rust library for hash verification and file pattern matching"
